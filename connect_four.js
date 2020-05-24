@@ -163,6 +163,19 @@ $('#board button').on('click',function(){
 
 })
 
+function winEffect(row, col){
+  $('#board').find('tr').eq(row).find('td').eq(col).find('button').css('background-color',currentColorTint)
+  setTimeout(() => { $('#board').find('tr').eq(row).find('td').eq(col).find('button').css('background-color',currentColor) }, 500);
+  setTimeout(() => { $('#board').find('tr').eq(row).find('td').eq(col).find('button').css('background-color',currentColorTint) }, 1000);
+  setTimeout(() => { $('#board').find('tr').eq(row).find('td').eq(col).find('button').css('background-color',currentColor) }, 1500);
+  setTimeout(() => { $('#board').find('tr').eq(row).find('td').eq(col).find('button').css('background-color',currentColorTint) }, 2000);
+  setTimeout(() => { $('#board').find('tr').eq(row).find('td').eq(col).find('button').css('background-color',currentColor) }, 2500);
+  setTimeout(() => { $('#board').find('tr').eq(row).find('td').eq(col).find('button').css('background-color',currentColorTint) }, 3000);
+  setTimeout(() => { $('#board').find('tr').eq(row).find('td').eq(col).find('button').css('background-color',currentColor) }, 3500);
+  setTimeout(() => { $('#board').find('tr').eq(row).find('td').eq(col).find('button').css('background-color',currentColorTint) }, 4000);
+}
+
+
 function checkForHorizontal() {
   for (var row = 0; row < 6; row++) {
     for (var col = 0; col < 4; col++) {
@@ -170,6 +183,10 @@ function checkForHorizontal() {
       board[row][col] == board[row][col+1] &&
       board[row][col] == board[row][col+2] &&
       board[row][col] == board[row][col+3]){
+        winEffect(row,col)
+        winEffect(row,col+1)
+        winEffect(row,col+2)
+        winEffect(row,col+3)
         return true
       }
     }
@@ -184,6 +201,10 @@ function checkForVertical() {
       board[row][col] == board[row+1][col] &&
       board[row][col] == board[row+2][col] &&
       board[row][col] == board[row+3][col]){
+        winEffect(row,col)
+        winEffect(row+1,col)
+        winEffect(row+2,col)
+        winEffect(row+3,col)
         return true
       }
     }
@@ -199,6 +220,10 @@ function checkForDiagonal(){
       board[row][col] == board[row-1][col+1] &&
       board[row][col] == board[row-2][col+2] &&
       board[row][col] == board[row-3][col+3]){
+        winEffect(row,col)
+        winEffect(row-1,col+1)
+        winEffect(row-2,col+2)
+        winEffect(row-3,col+3)
         return true
       }
     }
@@ -210,14 +235,19 @@ function checkForDiagonal(){
       board[row][col] == board[row+1][col+1] &&
       board[row][col] == board[row+2][col+2] &&
       board[row][col] == board[row+3][col+3]){
+        winEffect(row,col)
+        winEffect(row+1,col+1)
+        winEffect(row+2,col+2)
+        winEffect(row+3,col+3)
         return true
       }
     }
   }
   return false
-
-
 }
+
+
+
 
 function checkForWin() {
 
